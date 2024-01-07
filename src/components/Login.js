@@ -8,11 +8,11 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const email = useRef(null);
   const password = useRef(null);
-  const username = useRef(null);
+  // const username = useRef(null);
 
   const handleButtonClick = () => {
     //validate the form data
-     const message = checkValidData(email.current.value, password.current.value, username.current.value);
+     const message = checkValidData(email.current.value, password.current.value);
      setErrorMessage(message);
    
      // Sign In/Sign Up
@@ -34,7 +34,6 @@ const Login = () => {
         <form onSubmit={(e) => e.preventDefault()} className='absolute p-12 bg-black w-1/4 my-36 mx-auto right-0 left-0 text-white bg-opacity-80'>
             <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
             {!isSignInForm && (<input 
-              ref={username}
               type='text' 
               placeholder='User Name' 
               className='p-4 my-4 w-full bg-gray-600' 
