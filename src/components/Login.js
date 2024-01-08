@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Header from './Header';
 import { useState } from 'react';
 import { checkValidData } from '../utils/validate';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -35,7 +35,13 @@ const Login = () => {
           displayName: username.current.value, photoURL: "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png"
         }).then(() => {
           const {uid, email, displayName, photoURL} = auth.currentUser;
-          dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+          dispatch(
+            addUser(
+              {uid: uid, 
+               email: email, 
+               displayName: displayName, 
+               photoURL: photoURL
+              }));
           navigate("/browse");
         }).catch((error) => {
           setErrorMessage(error.message);
@@ -55,7 +61,6 @@ const Login = () => {
       .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      console.log(user);
       navigate("/browse");
      })
      .catch((error) => {
