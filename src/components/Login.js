@@ -32,7 +32,7 @@ const Login = () => {
        // Signed up 
         const user = userCredential.user;
         updateProfile(user, {
-          displayName: username.current.value, photoURL: "https://avatars.githubusercontent.com/u/49508058?v=4"
+          displayName: username.current.value, photoURL: "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png"
         }).then(() => {
           const {uid, email, displayName, photoURL} = auth.currentUser;
           dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
