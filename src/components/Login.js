@@ -7,6 +7,7 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { userPhotoURL } from '../utils/constants';
 
 
 const Login = () => {
@@ -32,7 +33,7 @@ const Login = () => {
        // Signed up 
         const user = userCredential.user;
         updateProfile(user, {
-          displayName: username.current.value, photoURL: "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png"
+          displayName: username.current.value, photoURL: userPhotoURL
         }).then(() => {
           const {uid, email, displayName, photoURL} = auth.currentUser;
           dispatch(
